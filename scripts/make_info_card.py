@@ -14,7 +14,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "info-card.svg")
 STATIC = bool(os.environ.get("STATIC"))
 
-W, H = 480, 400
+W, H = 480, 420
 PAD = 20
 TITLEBAR_H = 30
 KEY_X = PAD
@@ -63,6 +63,7 @@ ROWS = [
     ("kv", "LeetCode", "Raghavendra-1729-cell (1750 Max)"),
     ("kv", "Codeforces", "Raghavendra1729-cell (1210 Max)"),
     ("kv", "CodeChef", "raghav1729420 (1680 Max)"),
+    ("kv", "AtCoder", "Raghav1729 (970 Max)"),
 ]
 
 
