@@ -1,0 +1,4 @@
+source-prepped.png
+*.png
+__pycache__/
+.DS_Store
