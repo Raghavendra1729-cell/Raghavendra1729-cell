@@ -25,18 +25,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r scripts/requirements.txt
 
-      - name: Fetch contributions
-        run: python scripts/fetch_contributions.py
+      - name: Update LeetCode Stats Card
+        run: python scripts/make_leetcode_card.py
         env:
           GH_PROFILE_USER: Raghavendra-1729-cell
-
-      - name: Render heatmap SVG
-        run: python scripts/render_heatmap_svg.py
 
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/contributions.json contrib-heatmap.svg
-          git commit -m "Auto-update contributions heatmap [skip ci]" || exit 0
+          git add leetcode-card.svg
+          git commit -m "Auto-update LeetCode stats card [skip ci]" || exit 0
           git push
