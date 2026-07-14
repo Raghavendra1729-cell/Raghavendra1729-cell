@@ -28,7 +28,7 @@ jobs:
       - name: Fetch contributions
         run: python scripts/fetch_contributions.py
         env:
-          GH_PROFILE_USER: Raghavendra1729-cell
+          GH_PROFILE_USER: Raghavendra-1729-cell
 
       - name: Render heatmap SVG
         run: python scripts/render_heatmap_svg.py

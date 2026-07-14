@@ -1,55 +1,52 @@
 #!/usr/bin/env python3
 """
-Scrape real daily contribution counts from GitHub's public, unauthenticated
-contributions endpoint (the same fragment the profile page itself uses) and
-write data/contributions.json with the raw days plus derived stats
-(current streak, longest streak, best day, monthly totals).
+Scrape real daily submission counts from LeetCode's public GraphQL endpoint.
+Writes data/contributions.json with raw days plus derived stats.
 
-No token, no auth, no GraphQL -- just the public HTML GitHub already serves.
 Run daily by .github/workflows/update-profile-art.yml.
 """
 import datetime
 import json
 import os
-import re
 import sys
-
 import requests
-from bs4 import BeautifulSoup
 
-USERNAME = os.environ.get("GH_PROFILE_USER", "YOUR_GITHUB_USERNAME")
-URL = f"https://github.com/users/{USERNAME}/contributions"
+USERNAME = os.environ.get("GH_PROFILE_USER", "Raghavendra-1729-cell")
+# Note: we use Raghavendra-1729-cell as the default username for LeetCode.
 OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "contributions.json")
 
-
-def fetch_days():
-    resp = requests.get(URL, headers={"User-Agent": "profile-readme-bot/1.0"}, timeout=30)
+def fetch_leetcode_calendar(username):
+    url = "https://leetcode.com/graphql"
+    query = """
+    query userProfileCalendar($username: String!) {
+      matchedUser(username: $username) {
+        userCalendar {
+          submissionCalendar
+        }
+      }
+    }
+    """
+    headers = {
+        "content-type": "application/json",
+        "referer": f"https://leetcode.com/{username}",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+    }
+    payload = {
+        "query": query,
+        "variables": {"username": username}
+    }
+    
+    resp = requests.post(url, json=payload, headers=headers, timeout=30)
     resp.raise_for_status()
-    soup = BeautifulSoup(resp.text, "html.parser")
-
-    cells = soup.select("td.ContributionCalendar-day")
-    if not cells:
-        print("no calendar cells found -- github markup may have changed", file=sys.stderr)
+    data = resp.json()
+    
+    matched_user = data.get("data", {}).get("matchedUser")
+    if not matched_user:
+        print(f"User {username} not found on LeetCode", file=sys.stderr)
         sys.exit(1)
-
-    days = []
-    for td in cells:
-        date = td.get("data-date")
-        if not date:
-            continue
-        td_id = td.get("id")
-        tooltip_el = soup.find("tool-tip", attrs={"for": td_id}) if td_id else None
-        text = tooltip_el.get_text(strip=True) if tooltip_el else ""
-        if re.search(r"no contributions", text, re.I):
-            count = 0
-        else:
-            m = re.match(r"(\d+)", text)
-            count = int(m.group(1)) if m else 0
-        days.append({"date": date, "count": count})
-
-    days.sort(key=lambda d: d["date"])
-    return days
-
+        
+    calendar_str = matched_user.get("userCalendar", {}).get("submissionCalendar", "{}")
+    return json.loads(calendar_str)
 
 def compute_current_streak(days):
     idx = len(days) - 1
@@ -64,7 +61,6 @@ def compute_current_streak(days):
     if streak == 0:
         return 0, None, None
     return streak, days[start_idx]["date"], days[end_idx]["date"]
-
 
 def compute_longest_streak(days):
     longest = run = 0
@@ -83,11 +79,34 @@ def compute_longest_streak(days):
             run = 0
     return longest, longest_start, longest_end
 
-
-def build_data(days):
+def build_data(submission_calendar):
+    # LeetCode submissionCalendar is a dict of unix_timestamp (str) -> submission_count (int)
+    # We need to map this to a grid of the last 365 days.
+    today = datetime.date.today()
+    start_date = today - datetime.timedelta(days=365)
+    
+    # Parse submissionCalendar timestamps to YYYY-MM-DD
+    submissions_by_date = {}
+    for ts_str, count in submission_calendar.items():
+        try:
+            ts = int(ts_str)
+            dt = datetime.datetime.fromtimestamp(ts, datetime.timezone.utc).date()
+            date_str = dt.strftime("%Y-%m-%d")
+            submissions_by_date[date_str] = count
+        except (ValueError, OSError):
+            continue
+            
+    days = []
+    curr = start_date
+    while curr <= today:
+        date_str = curr.strftime("%Y-%m-%d")
+        count = submissions_by_date.get(date_str, 0)
+        days.append({"date": date_str, "count": count})
+        curr += datetime.timedelta(days=1)
+        
     total = sum(d["count"] for d in days)
     active_days = sum(1 for d in days if d["count"] > 0)
-    best = max(days, key=lambda d: d["count"])
+    best = max(days, key=lambda d: d["count"]) if days else {"date": "", "count": 0}
     cur_len, cur_start, cur_end = compute_current_streak(days)
     long_len, long_start, long_end = compute_longest_streak(days)
 
@@ -99,7 +118,7 @@ def build_data(days):
 
     return {
         "username": USERNAME,
-        "generated_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "generated_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "range": {"start": days[0]["date"], "end": days[-1]["date"]},
         "total_contributions": total,
         "active_days": active_days,
@@ -111,13 +130,12 @@ def build_data(days):
         "days": days,
     }
 
-
 if __name__ == "__main__":
-    days = fetch_days()
-    data = build_data(days)
+    calendar = fetch_leetcode_calendar(USERNAME)
+    data = build_data(calendar)
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     with open(OUT_PATH, "w") as f:
         json.dump(data, f, indent=2)
-    print(f"wrote {OUT_PATH}: {data['total_contributions']} contributions, "
+    print(f"wrote {OUT_PATH}: {data['total_contributions']} submissions, "
           f"current streak {data['current_streak']['length']}, "
           f"longest streak {data['longest_streak']['length']}")
