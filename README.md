@@ -33,7 +33,7 @@
 <br>
 
 [![LeetCode](https://img.shields.io/badge/LeetCode-Raghavendra--1729--cell-FFA116?style=for-the-badge&logo=leetcode&logoColor=black)](https://leetcode.com/u/Raghavendra-1729-cell)
-[![Codeforces](https://img.shields.io/badge/Codeforces-Raghavendra1729--cell-1F8ACB?style=for-the-badge&logo=codeforces&logoColor=white)](https://codeforces.com/profile/Raghavendra1729-cell)
+[![Codeforces](https://img.shields.io/badge/Codeforces-Dummy_acc_1-1F8ACB?style=for-the-badge&logo=codeforces&logoColor=white)](https://codeforces.com/profile/Dummy_acc_1)
 [![CodeChef](https://img.shields.io/badge/CodeChef-raghav1729420-5B4638?style=for-the-badge&logo=codechef&logoColor=white)](https://www.codechef.com/users/raghav1729420)
 [![AtCoder](https://img.shields.io/badge/AtCoder-Raghav1729-333333?style=for-the-badge&logo=atcoder&logoColor=white)](https://atcoder.jp/users/Raghav1729)
 
