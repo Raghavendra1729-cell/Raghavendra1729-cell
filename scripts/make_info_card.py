@@ -14,7 +14,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "info-card.svg")
 STATIC = bool(os.environ.get("STATIC"))
 
-W, H = 480, 420
+W, H = 480, 390
 PAD = 20
 TITLEBAR_H = 30
 KEY_X = PAD
@@ -48,22 +48,20 @@ HOST = "raghav"   # shown as  you@github  in the header
 ROWS = [
     ("host",),
     ("kv", "Now", "Software Engineering Student @ Scaler"),
-    ("kv", "Focus", "AI Engineering & Backend Architecture"),
-    ("kv", "Edu", "Scaler School of Technology '28"),
+    ("kv", "Focus", "Full-stack, AI/RAG & Backend Systems"),
+    ("kv", "Builds", "Products, platforms & developer tools"),
     ("gap",),
     ("sec", "Languages"),
-    ("kv", "Fluent", "Java, C++, Python, JavaScript, SQL"),
+    ("kv", "Core", "TypeScript, Go, Python, C++, SQL"),
     ("gap",),
-    ("sec", "Stack"),
-    ("kv", "Backend", "Spring Boot, Node.js, Kafka, Redis"),
-    ("kv", "AI / ML", "RAG Pipelines, Embeddings, LLMs, Numpy"),
-    ("kv", "Tools", "Git, Docker, Postman, MongoDB, MySQL"),
+    ("sec", "Engineering Stack"),
+    ("kv", "Web", "Next.js, React, Vite, Tailwind CSS"),
+    ("kv", "APIs", "Go/Gin, FastAPI, Node.js"),
+    ("kv", "Data", "PostgreSQL, MongoDB, Redis, Qdrant"),
+    ("kv", "Infra", "Docker, Linux, GitHub Actions, Caddy"),
     ("gap",),
-    ("sec", "Coding Profiles"),
-    ("kv", "LeetCode", "Raghavendra-1729-cell (1750 Max)"),
-    ("kv", "Codeforces", "Raghavendra1729-cell (1210 Max)"),
-    ("kv", "CodeChef", "raghav1729420 (1680 Max)"),
-    ("kv", "AtCoder", "Raghav1729 (970 Max)"),
+    ("sec", "Practices"),
+    ("bul", "Testing, API design, security & observability"),
 ]
 
 
