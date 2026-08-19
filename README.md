@@ -38,3 +38,14 @@
 [![AtCoder](https://img.shields.io/badge/AtCoder-Raghav1729-333333?style=for-the-badge&logo=atcoder&logoColor=white)](https://atcoder.jp/users/Raghav1729)
 
 </div>
+
+## Featured Projects
+
+| Project | Engineering focus |
+|---|---|
+| [Khaao](https://github.com/Raghavendra1729-cell/Khaao) | Mobile-first canteen pre-order PWA with a Go API, PostgreSQL, Firebase auth, and live order tracking. |
+| [Diablo](https://github.com/Raghavendra1729-cell/Diablo) | Voice and chat AI portfolio agent with hybrid RAG, guardrails, and live interview scheduling. |
+| [CSES Bookmarker](https://github.com/Raghavendra1729-cell/CSES-BOOKMARKER) | Chrome extension for bookmarks, notes, solve timers, backups, and on-demand AI submission reviews. |
+| [Kal Karega, Aaj Kar](https://github.com/Raghavendra1729-cell/KalKaregaAjKar) | Private mobile-first study and workout planner with editable gym plans, progress history, and reminders. |
+| [Multi-threaded HTTP Server](https://github.com/Raghavendra1729-cell/Multithreaded-Http-Server) | Dependency-free HTTP/1.1 server built with Python sockets, thread-pool concurrency, streaming, and integration tests. |
+| [Portfolio](https://github.com/Raghavendra1729-cell/Portfolio) | Content-driven Next.js portfolio with a protected CMS, MongoDB, Cloudinary, and dynamic project data. |
