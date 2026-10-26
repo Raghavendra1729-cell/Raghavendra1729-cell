@@ -13,7 +13,7 @@ I'm a Computer Science student at Scaler School of Technology and BITS Pilani in
 
 I'm curious about how things work under the hood, so I like building them from scratch: an HTTP server on raw sockets, a browser agent that reads screenshots, a voice assistant that answers questions about me.
 
-When I'm not building, I'm usually solving problems on LeetCode, Codeforces, CodeChef or AtCoder. Right now I'm learning DevOps and writing C++ for a trading course.
+When I'm not building, I'm usually solving problems on LeetCode, Codeforces, CodeChef or AtCoder. Right now I'm learning DevOps and C++ for low latency systems.
 
 If something here looks interesting, say hi through the links below.
 
