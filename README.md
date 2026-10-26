@@ -9,7 +9,13 @@
 
 ## Hi, I'm Raghavendra 👋
 
-I'm a Computer Science student at Scaler School of Technology and BITS Pilani in Bengaluru. I like building AI apps and backend systems end to end, and I solve problems on LeetCode, Codeforces, CodeChef and AtCoder.
+I'm a Computer Science student at Scaler School of Technology and BITS Pilani in Bengaluru.
+
+I'm curious about how things work under the hood, so I like building them from scratch: an HTTP server on raw sockets, a browser agent that reads screenshots, a voice assistant that answers questions about me.
+
+When I'm not building, I'm usually solving problems on LeetCode, Codeforces, CodeChef or AtCoder. Right now I'm learning DevOps and writing C++ for a trading course.
+
+If something here looks interesting, say hi through the links below.
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-Visit-7C3AED?style=for-the-badge&logo=vercel&logoColor=white)](https://raghav-1729-portfolio.hf.space)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/raghavendra-linga)
@@ -32,14 +38,3 @@ I'm a Computer Science student at Scaler School of Technology and BITS Pilani in
 [![AtCoder](https://img.shields.io/badge/AtCoder-Raghav1729-111827?style=flat-square)](https://atcoder.jp/users/Raghav1729)
 
 </div>
-
-## Projects
-
-| Project | What it is |
-|---|---|
-| [Diablo](https://github.com/Raghavendra1729-cell/Diablo) ([live](https://raghav-1729-diablo-ai-agent.hf.space)) | Voice and chat AI assistant for my portfolio using hybrid RAG, Qdrant and Cal.com interview booking |
-| [Web-Automation-Agent](https://github.com/Raghavendra1729-cell/WEB-AUTOMATION-AGENT) | Agent that looks at screenshots with Qwen2.5-VL and drives Chromium through Playwright |
-| [Multithreaded HTTP Server](https://github.com/Raghavendra1729-cell/Multithreaded-Http-Server) | HTTP/1.1 server in plain Python sockets with a thread pool and 54 tests |
-| [SastaNotebookLm](https://github.com/Raghavendra1729-cell/SastaNotebookLm) ([live](https://sasta-notebook-lm-frontend.vercel.app/)) | Upload a PDF or TXT and ask questions about it using Gemini embeddings and Qdrant |
-| [Portfolio](https://github.com/Raghavendra1729-cell/Portfolio) ([live](https://raghav-1729-portfolio.hf.space)) | Next.js portfolio with a MongoDB backed admin CMS |
-| [PlaceTrack](https://github.com/Raghavendra1729-cell/placetrack-devops-capstone) | DevOps capstone: Docker, CI/CD, Terraform, Kubernetes and monitoring |
