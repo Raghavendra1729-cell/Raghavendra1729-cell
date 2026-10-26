@@ -59,7 +59,3 @@ I like building things end to end: the API, the database, the UI and the part wh
 | [CSES Solutions](https://github.com/Raghavendra1729-cell/CSES-Solutions) and [templates](https://github.com/Raghavendra1729-cell/templates) | My C++ solutions and contest templates |
 
 You can find the rest of my work in the repositories tab.
-
-<div align="center">
-
-</div>
